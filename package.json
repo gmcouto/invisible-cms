@@ -12,8 +12,7 @@
     "sails-hook-autoreload": "^1.0.0",
     "sails-hook-grunt": "^2.0.0",
     "sails-hook-orm": "^2.0.0-16",
-    "sails-hook-sockets": "^1.4.0",
-    "vue": "^2.4.2"
+    "sails-hook-sockets": "^1.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -31,7 +30,8 @@
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.4.2",
     "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1"
+    "webpack-dev-server": "^2.6.1",
+    "vue": "^2.4.2"
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
