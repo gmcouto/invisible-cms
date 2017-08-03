@@ -48,6 +48,7 @@
   "author": "anonymous node/sails user",
   "license": "",
   "engines": {
-    "node": "8"
+    "node": "6.11.2",
+    "npm": "3.10.10"
   }
 }
