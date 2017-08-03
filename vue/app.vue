@@ -7,7 +7,7 @@ module.exports = {
     el: "#app",
     replace: false,
     data: {
-        message: "We did it!"
+        message: "We did it #yes!"
     }
 }
 </script>

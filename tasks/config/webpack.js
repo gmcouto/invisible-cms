@@ -1,32 +1,47 @@
 module.exports = function(grunt) {
- 
-    grunt.config.set('webpack', {
+
+    var config = {
         dev: {
-            entry: "./vue/main.js", //Entry point of our vue application
+            // This is the "main" file which should include all other modules
+            entry: './vue/main.js',
+            // Where should the compiled file go?
             output: {
-                path: __dirname+"/../../assets/js/vue",
-                filename: "build.js"
+                // To the `dist` folder
+                path: __dirname+'/../../assets/js/vue',
+                // With the filename `build.js` so it's dist/build.js
+                filename: 'build.js'
             },
-            stats: {
-                // Configure the console output
-                colors: true,
-                modules: true,
-                reasons: true
-            },
-            progress: false,
-            failOnError: true,
-            devtool: "#source-map",
             module: {
+                // Special compilation rules
                 loaders: [
-                    { test: /\.vue$/, loader: "vue-loader" },
+                    {
+                        // Ask webpack to check: If this file ends with .js, then apply some transforms
+                        test: /\.vue$/,
+                        // Transform it with babel
+                        loader: 'vue-loader',
+                        // don't transform node_modules folder (which don't need to be compiled)
+                        exclude: /node_modules/
+                    }
                 ]
             }
         }
-    });
- 
-    grunt.registerTask('webpack', [
-        'webpack:dev'
-    ]);
- 
-    grunt.loadNpmTasks('grunt-webpack');
+    };
+
+    if (process.env.NODE_ENV == 'production') {
+        var webpack = require("webpack");
+        config.dev.plugins = [
+                new webpack.DefinePlugin({
+                    "process.env": {
+                        "NODE_ENV": JSON.stringify("production")
+                    }
+                }),
+                new webpack.optimize.DedupePlugin(),
+                new webpack.optimize.UglifyJsPlugin()
+            ];
+    }
+
+
+    grunt.config.set('webpack',config);
+
+    grunt.loadNpmTasks("grunt-webpack");
 };
