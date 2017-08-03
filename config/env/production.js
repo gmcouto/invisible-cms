@@ -221,7 +221,8 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
      onlyAllowOrigins: [
-       'http://invisible-cms.herokuapp.com',
+        'https://invisible-cms.herokuapp.com',
+        'http://invisible-cms.herokuapp.com',
      ],
 
 
