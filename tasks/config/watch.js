@@ -26,6 +26,21 @@ module.exports = function(grunt) {
         'syncAssets',
         'linkAssets'
       ]
+    },
+
+
+    vue: {
+
+      // Assets to watch:
+      files: [
+        'vue/**/*',
+      ],
+
+      // When assets are changed:
+      tasks: [
+        'webpack:dev',
+        'linkAssets'
+      ]
     }
   });
 

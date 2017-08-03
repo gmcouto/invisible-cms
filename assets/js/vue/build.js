@@ -7819,7 +7819,7 @@ exports = module.exports = __webpack_require__(7)(true);
 
 
 // module
-exports.push([module.i, "\nh1 {\n    color: teal;\n}\n", "", {"version":3,"sources":["C:/Users/coutog/invisible-cms/vue/app.vue?49d9f34b"],"names":[],"mappings":";AAeA;IACA,YAAA;CACA","file":"app.vue","sourcesContent":["<template>\r\n    <h1>{{ message }}</h1>\r\n</template>\r\n\r\n<script>\r\nmodule.exports = {\r\n    el: \"#app\",\r\n    replace: false,\r\n    data: {\r\n        message: \"We did it!\"\r\n    }\r\n}\r\n</script>\r\n\r\n<style>\r\n    h1 {\r\n        color: teal;\r\n    }\r\n</style>"],"sourceRoot":""}]);
+exports.push([module.i, "\nh1 {\n    color: teal;\n}\n", "", {"version":3,"sources":["C:/Users/coutog/invisible-cms/vue/app.vue?486863ba"],"names":[],"mappings":";AAeA;IACA,YAAA;CACA","file":"app.vue","sourcesContent":["<template>\r\n    <h1>OiN: {{ message }}</h1>\r\n</template>\r\n\r\n<script>\r\nmodule.exports = {\r\n    el: \"#app\",\r\n    replace: false,\r\n    data: {\r\n        message: \"We did it!\"\r\n    }\r\n}\r\n</script>\r\n\r\n<style>\r\n    h1 {\r\n        color: teal;\r\n    }\r\n</style>"],"sourceRoot":""}]);
 
 // exports
 
@@ -8280,7 +8280,7 @@ module.exports = {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h1', [_vm._v(_vm._s(_vm.message))])
+  return _c('h1', [_vm._v("OiN: " + _vm._s(_vm.message))])
 }
 var staticRenderFns = []
 render._withStripped = true
