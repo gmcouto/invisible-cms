@@ -7736,7 +7736,6 @@ module.exports = g;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_app_vue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_app_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_app_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_21780794_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_app_vue__ = __webpack_require__(12);
 var disposed = false
 function injectStyle (ssrContext) {
@@ -7755,7 +7754,7 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_app_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_selector_type_script_index_0_app_vue__["a" /* default */],
   __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_21780794_hasScoped_false_node_modules_vue_loader_lib_selector_type_template_index_0_app_vue__["a" /* default */],
   __vue_styles__,
   __vue_scopeId__,
@@ -8259,20 +8258,50 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
 //
 
-module.exports = {
+/* harmony default export */ __webpack_exports__["a"] = ({
     el: "#app",
     replace: false,
     data: {
-        message: "We did it #yes!"
+        message: "Posts",
+        posts: [],
+        errors: []
+    },
+    created: function() {
+    	axios.get('/post')
+    	.then(response => {
+    		this.posts = response.data
+    	}).catch(err => {
+    		this.errors.push(err);
+    	});
+    },
+    updated: function() {
+        $('#editor').summernote();
+        //AlloyEditor.editable('editor');
     }
-}
+});
 
 
 /***/ }),
@@ -8281,7 +8310,26 @@ module.exports = {
 
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h1', [_vm._v("OiN: " + _vm._s(_vm.message))])
+  return _c('div', [_c('h1', [_vm._v(_vm._s(_vm.message))]), _vm._v(" "), (_vm.posts && _vm.posts.length) ? _c('ul', _vm._l((_vm.posts), function(post) {
+    return _c('li', [_c('p'), _c('div', {
+      attrs: {
+        "id": "titulo"
+      }
+    }, [_vm._v(_vm._s(post.title))]), _c('p'), _vm._v(" "), _c('div', {
+      ref: "body",
+      refInFor: true,
+      staticClass: "editor",
+      attrs: {
+        "id": "editor",
+        "data-name": "main-content"
+      },
+      domProps: {
+        "innerHTML": _vm._s(post.body)
+      }
+    })])
+  })) : _c('div', [_vm._v("Nothing to see here")]), _vm._v(" "), (_vm.errors && _vm.errors.length) ? _c('ul', _vm._l((_vm.errors), function(error) {
+    return _c('li', [_vm._v("\n\t\t\t\t" + _vm._s(error.message) + "\n\t\t\t")])
+  })) : _vm._e()])
 }
 var staticRenderFns = []
 render._withStripped = true

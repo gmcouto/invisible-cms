@@ -1,13 +1,42 @@
 <template>
-    <h1>OiN: {{ message }}</h1>
+	<div>
+		<h1>{{ message }}</h1>
+		<ul v-if="posts && posts.length">
+			<li v-for="post of posts">
+				<p><div id="titulo">{{post.title}}</div></p>
+				<div ref="body" class="editor" id="editor" data-name="main-content" v-html="post.body"></div>
+			</li>
+		</ul>
+        <div v-else>Nothing to see here</div>
+
+		<ul v-if="errors && errors.length">
+			<li v-for="error of errors">
+				{{error.message}}
+			</li>
+		</ul>
+	</div>
 </template>
 
 <script>
-module.exports = {
+export default {
     el: "#app",
     replace: false,
     data: {
-        message: "We did it #yes!"
+        message: "Posts",
+        posts: [],
+        errors: []
+    },
+    created: function() {
+    	axios.get('/post')
+    	.then(response => {
+    		this.posts = response.data
+    	}).catch(err => {
+    		this.errors.push(err);
+    	});
+    },
+    updated: function() {
+        $('#editor').summernote();
+        //AlloyEditor.editable('editor');
     }
 }
 </script>
