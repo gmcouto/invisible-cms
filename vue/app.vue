@@ -27,11 +27,12 @@ export default {
         errors: []
     },
     created: function() {
+        var comp = this;
     	axios.get('/post')
-    	.then(response => {
-    		this.posts = response.data
-    	}).catch(err => {
-    		this.errors.push(err);
+    	.then(function(response) {
+    		comp.posts = response.data
+    	}).catch(function(err) {
+    		comp.errors.push(err);
     	});
     },
     updated: function() {
